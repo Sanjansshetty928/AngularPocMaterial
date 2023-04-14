@@ -1,0 +1,91 @@
+
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput placeholder="" search (keyup)="applyFilter($event)" #input id="filterinput"/>
+  </mat-form-field>
+<div class="button-container">
+  <button  mat-raised-button (click)="openDialog()" (keyup.enter)="openDialog()">Add</button>
+</div>
+  <br>
+  <div>
+    <table mat-table matSort (matSortChange)="sortData($event)" [dataSource]="dataSource" >
+
+
+      <ng-container matColumnDef="Product">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Product</th>
+        <td mat-cell *matCellDef="let element">{{ element.Product }}</td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="productId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Product ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.productId }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Module">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Module</th>
+        <td mat-cell *matCellDef="let element">{{ element.Module}}</td>
+      </ng-container>
+      <ng-container matColumnDef="ModuleId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Module ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.ModuleId }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Modulename" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="Modulename">Module Name</th>
+        <!-- <tr *ngFor="let dessert of sortedData"></tr> -->
+        <td mat-cell *matCellDef="let element">{{ element.Modulename }}</td>
+        <!-- <td mat-cell *ngFor="let dessert of sortedData">{{dessert.Modulename}}</td> -->
+      </ng-container>
+      <ng-container matColumnDef="Learnersaccessed">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Learners Accessed</th>
+        <td mat-cell *matCellDef="let element">{{ element.Learnersaccessed }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Avgtimespent">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Avg Time Spent</th>
+        <td mat-cell *matCellDef="let element">{{ element.Avgtimespent }}</td>
+      </ng-container>
+      <ng-container matColumnDef="AvgModuleactivitiescompleted">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Avg Module Activities Completed</th>
+        <td mat-cell *matCellDef="let element">{{ element.AvgModuleactivitiescompleted }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Avgofquizattempts">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Avg of Quiz attempts</th>
+        <td mat-cell *matCellDef="let element">{{ element.Avgofquizattempts }}</td>
+      </ng-container>
+      <ng-container matColumnDef="AvgLastquizscore">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Avg Last Quiz score</th>
+        <td mat-cell *matCellDef="let element">{{ element.AvgLastquizscore }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Avgquizscore">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Avg Last Quiz score</th>
+        <td mat-cell *matCellDef="let element">{{ element.Avgquizscore }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Lowquizscore">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Low Quiz Score</th>
+        <td mat-cell *matCellDef="let element">{{ element.Lowquizscore }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Highquizscore">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>High Quiz Score</th>
+        <td mat-cell *matCellDef="let element">{{ element.Highquizscore }}</td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let element"><button mat-icon-button color="warn" (click)="deleteRow(element)">
+          <mat-icon>Delete</mat-icon></button></td>
+
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      <tr *matNoDataRow>
+        <td colspan="12">No Records Found
+        </td>
+    
+    
+    </tr>
+      
+    </table>
+   
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5,10,25,100]" aria-labels="select page of users"></mat-paginator>
+
+  </div>

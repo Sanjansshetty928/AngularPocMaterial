@@ -1,0 +1,45 @@
+table{
+    width: 100%;
+    border: 1px solid black;
+}
+.mat-form-field{
+    font-size: 14px;
+    width: 20%;
+}
+.button-container{
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+.mat-button{
+    padding: 10px 20px;
+}
+
+.matColumnDef{
+    color: black;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  
+  th {
+    background-color: #4CAF50;
+    color: black;
+  }
+  
+  tr:nth-child(even){background-color: #f2f2f2}
+  
+  /* .mat-paginator-page-size-label {
+    margin-right: 10px;
+  }
+  
+  .mat-paginator-range-label {
+    margin-left: 10px;
+    margin-right: 10px;
+  } */

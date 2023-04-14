@@ -1,0 +1,89 @@
+<h2 mat-dialog-title role="heading">Adding the details</h2>
+<mat-dialog-content>
+    <form role="dialog" [formGroup]="productForm" #formElement #f="ngForm">
+    <mat-form-field>
+        <mat-label>Product</mat-label>
+        <input matInput type="text" required formControlName="Product" #formElementChild>
+        <mat-error *ngIf="!productForm.get('Product')?.valid && productForm.get('Product')?.touched"
+        class="text-danger">Please enter the valid Product</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Product Id</mat-label>
+        <input matInput type="text" required formControlName="productId" #formElementChild>
+        <mat-error *ngIf="!productForm.get('productId')?.valid && productForm.get('productId')?.touched"
+        class="text-danger">Please enter the valid Product Id</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Module</mat-label>
+        <input matInput type="text" required formControlName="Module" #formElementChild> 
+        <mat-error *ngIf="!productForm.get('Module')?.valid && productForm.get('Module')?.touched"
+        class="text-danger">Please enter valid Module</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Module Id</mat-label>
+        <input matInput type="text" required formControlName="ModuleId" #formElementChild>
+        <mat-error *ngIf="!productForm.get('ModuleId')?.valid && productForm.get('ModuleId')?.touched"
+        class="text-danger">Please enter valid Module Id</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Module Name</mat-label>
+        <input matInput type="text" required formControlName="Modulename" #formElementChild>
+        <mat-error *ngIf="!productForm.get('Modulename')?.valid && productForm.get('Modulename')?.touched"
+        class="text-danger">Please enter valid Name</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Learners Accessed</mat-label>
+        <input matInput type="text" required formControlName="Learnersaccessed" #formElementChild>
+        <mat-error *ngIf="!productForm.get('Learnersaccessed')?.valid && productForm.get('Learnersaccessed')?.touched"
+        class="text-danger">Please enter the valid Learners Accessed</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Avg Time Spent</mat-label>
+        <input matInput type="text" required formControlName="Avgtimespent" #formElementChild>
+        <mat-error *ngIf="!productForm.get('Avgtimespent')?.valid && productForm.get('Avgtimespent')?.touched"
+        class="text-danger">Please enter the valid Avg Time Spent</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Avg Module Activities Completed</mat-label>
+        <input matInput type="text" required formControlName="AvgModuleactivitiescompleted" #formElementChild>
+        <mat-error *ngIf="!productForm.get('AvgModuleactivitiescompleted')?.valid && productForm.get('AvgModuleactivitiescompleted')?.touched"
+        class="text-danger">Enter valid Avg Module Activities Completed</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Avg of quiz Attempts</mat-label>
+        <input matInput type="text" required formControlName="Avgofquizattempts" #formElementChild>
+        <mat-error *ngIf="!productForm.get('Avgofquizattempts')?.valid && productForm.get('Avgofquizattempts')?.touched"
+        class="text-danger">Please enter the valid Avg Quiz Attempts</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Avg Last Quiz Score</mat-label>
+        <input matInput type="text" required formControlName="AvgLastquizscore" #formElementChild>
+        <mat-error *ngIf="!productForm.get('AvgLastquizscore')?.valid && productForm.get('AvgLastquizscore')?.touched"
+        class="text-danger">Please enter the valid Avg Last Quiz Score</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Avg Quiz Score</mat-label>
+        <input autofocus="true" matInput type="text" required formControlName="Avgquizscore" #formElementChild>
+        <mat-error *ngIf="!productForm.get('Avgquizscore')?.valid && productForm.get('Avgquizscore')?.touched"
+        class="text-danger">Please enter the valid Avg Quiz Score</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Low Quiz Score</mat-label>
+        <input matInput type="text" required formControlName="Lowquizscore" #formElementChild>
+        <mat-error *ngIf="!productForm.get('Lowquizscore')?.valid && productForm.get('Lowquizscore')?.touched"
+        class="text-danger">Please enter the valid Low Quiz Score</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>High Quiz Score</mat-label>
+        <input matInput type="text" required formControlName="Highquizscore" #formElementChild>
+        <mat-error *ngIf="!productForm.get('Highquizscore')?.valid && productForm.get('Highquizscore')?.touched"
+        class="text-danger">Please enter the valid High Quiz Score</mat-error>
+    </mat-form-field>
+</form>
+    
+
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button [disabled]="f.invalid" mat-button mat-dialog-close mat-dialog-close="true" (keydown.enter)="onAddDetails()" (click)="onAddDetails()">Save</button>
+    <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>
