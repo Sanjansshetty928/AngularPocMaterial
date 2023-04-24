@@ -1,4 +1,4 @@
-import { FocusMonitor, ListKeyManager } from '@angular/cdk/a11y';
+import { FocusKeyManager, FocusMonitor, ListKeyManager } from '@angular/cdk/a11y';
 import { Component, ElementRef, HostListener, QueryList, ViewChild,AfterViewInit,OnInit, ViewChildren } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { TableService } from '../table.service';
@@ -14,47 +14,56 @@ export class DialogformComponent implements OnInit,AfterViewInit {
   @ViewChildren('formElementChild') elementChild!:QueryList<any>
 @HostListener('window:keyup',['$event'])
 productForm!:FormGroup;
-constructor(private formBuilder:FormBuilder,public tableService:TableService,private focusMonitor:FocusMonitor){}
-
-keyFunc(event:any){
-  if(event.code!=='Tab'){
-    const activeItem=this.keyManager.activeItem;
-
-    
-    if(activeItem){
-      this.keyManager.onKeydown(event);
-    this.focusMonitor.focusVia(activeItem.nativeElement,"keyboard");
-    }
-  }
-  else{
-    this.keyManager.onKeydown(event)
-    this.keyManager.setNextItemActive();
-  }
-}
+constructor(private fb:FormBuilder,public tableService:TableService,private focusMonitor:FocusMonitor){}
 
 
 ngAfterViewInit(){
   this.keyManager=new ListKeyManager(this.elementChild);
+  console.log(this.keyManager);
   this.keyManager.withHorizontalOrientation('ltr');
   this.keyManager.withWrap();
 }
 
 
+
+keyFunc(event:any){
+ 
+  if(event.code!=='Tab'){
+    // console.log('entered if loop');
+      this.keyManager.onKeydown(event);
+    this.focusMonitor.focusVia(this.keyManager.activeItem.nativeElement,"keyboard");
+  }
+
+  else{
+    
+    this.keyManager.onKeydown(event)
+    console.log(event);
+    this.keyManager.setNextItemActive();
+  }
+}
+
+
+
+
+
+
+
   ngOnInit(){
-    this.productForm=this.formBuilder.group({
-      Product: new FormControl('',[Validators.required,Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)]),
-      productId: new FormControl('',[Validators.required,Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)]),
-      Module:new FormControl('',[Validators.required,Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)]), 
-      ModuleId: new FormControl('',[Validators.required,Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)]),
-      Modulename:new FormControl('',[Validators.required,Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)]), 
-      Learnersaccessed:new FormControl('',[Validators.required,Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)]), 
-      Avgtimespent:new FormControl('',[Validators.required,Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)]), 
-      AvgModuleactivitiescompleted:new FormControl('',[Validators.required,Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)]), 
-      Avgofquizattempts:new FormControl('',[Validators.required,Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)]),
-      AvgLastquizscore:new FormControl('',[Validators.required,Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)]),
-      Avgquizscore:new FormControl('',[Validators.required,Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)]),
-      Lowquizscore:new FormControl('',[Validators.required,Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)]), 
-      Highquizscore:new FormControl('',[Validators.required,Validators.pattern(/^(\s+\S+\s*)*(?!\s).*$/)]), 
+    console.log('entered ngOninit')
+    this.productForm=this.fb.group({
+      Product:['',Validators.required],
+      productId: ['',Validators.required],
+      Module:['',Validators.required], 
+      ModuleId: ['',Validators.required],
+      Modulename:['',Validators.required], 
+      Learnersaccessed:['',Validators.required], 
+      Avgtimespent:['',Validators.required], 
+      AvgModuleactivitiescompleted:['',Validators.required], 
+      Avgofquizattempts:['',Validators.required],
+      AvgLastquizscore:['',Validators.required],
+      Avgquizscore:['',Validators.required],
+      Lowquizscore:['',Validators.required], 
+      Highquizscore:['',Validators.required], 
 
     })
   }

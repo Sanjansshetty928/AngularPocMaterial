@@ -63,7 +63,7 @@
     </mat-form-field>
     <mat-form-field>
         <mat-label>Avg Quiz Score</mat-label>
-        <input autofocus="true" matInput type="text" required formControlName="Avgquizscore" #formElementChild>
+        <input  matInput type="text" required formControlName="Avgquizscore" #formElementChild>
         <mat-error *ngIf="!productForm.get('Avgquizscore')?.valid && productForm.get('Avgquizscore')?.touched"
         class="text-danger">Please enter the valid Avg Quiz Score</mat-error>
     </mat-form-field>
